@@ -1,4 +1,15 @@
 ---
+- name: add Vagrant user to www-data group
+  become: yes
+  user:
+    name: vagrant
+    group: www-data
+
+- name: add www-data user to vagrant group
+  become: yes
+  user:
+    name: www-data
+    group: vagrant
 
 - name: Create database
   shell: php bin/console doctrine:database:create --if-not-exists
